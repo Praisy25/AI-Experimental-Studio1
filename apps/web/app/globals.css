@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Cascadia Code", Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button, a, input, textarea, select, article, section {
+    transition: color 140ms ease, background-color 140ms ease, border-color 140ms ease, opacity 140ms ease, transform 140ms ease;
+  }
+  .toast-enter { animation: toast-enter 180ms ease-out both; }
+  .skeleton-shimmer { background-image: linear-gradient(100deg, transparent 20%, rgb(255 255 255 / 10%) 50%, transparent 80%); background-size: 220% 100%; animation: skeleton-shimmer 1.35s linear infinite; }
+  @keyframes toast-enter { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes skeleton-shimmer { to { background-position: -220% 0; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+[data-theme="light"] body {
+  background: #f1f5f9;
+  color: #111827;
+}
+
+[data-theme="light"] main {
+  background-color: #f8fafc !important;
+  color: #111827 !important;
+}
+
+[data-theme="light"] main [class*="bg-[#"],
+[data-theme="light"] main [class*="bg-white/"] {
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] main [class*="bg-black/"] {
+  background-color: #f1f5f9 !important;
+}
+
+[data-theme="light"] main [class*="text-slate-100"],
+[data-theme="light"] main [class*="text-slate-200"],
+[data-theme="light"] main [class*="text-slate-300"] {
+  color: #1e293b !important;
+}
+
+[data-theme="light"] main [class*="text-slate-400"],
+[data-theme="light"] main [class*="text-slate-500"] {
+  color: #64748b !important;
+}
+
+[data-theme="light"] main [class*="border-white/"] {
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] button.fixed {
+  background-color: #fff !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+}
+
+@media print {
+  @page { margin: 14mm; }
+  body, main { background: #fff !important; color: #111 !important; }
+  main * { color: #111 !important; box-shadow: none !important; }
+  main article { break-inside: avoid; border-color: #d1d5db !important; background: #fff !important; }
+  main [role="alert"] { display: none !important; }
+}
